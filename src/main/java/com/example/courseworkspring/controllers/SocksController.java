@@ -24,14 +24,14 @@ public class SocksController {
     }
 
     @ExceptionHandler(InvalidSockRequestException.class)
-    public ResponseEntity<String> handleInvalidException(InvalidSockRequestException invalidSockRequestException){
+    public ResponseEntity<String> handleInvalidException(InvalidSockRequestException invalidSockRequestException) {
         return ResponseEntity.badRequest().body(invalidSockRequestException.getMessage());
     }
+
     @ExceptionHandler(InSufficientQuantityException.class)
-    public ResponseEntity<String> handleInSufficientException(InSufficientQuantityException inSufficientQuantityException){
+    public ResponseEntity<String> handleInSufficientException(InSufficientQuantityException inSufficientQuantityException) {
         return ResponseEntity.badRequest().body(inSufficientQuantityException.getMessage());
     }
-
 
 
     @PostMapping
@@ -52,7 +52,7 @@ public class SocksController {
             @ApiResponse(responseCode = "400", description = "товара нет на складе в нужном количестве или параметры запроса имеют некорректный формат"),
             @ApiResponse(responseCode = "500", description = "произошла ошибка, не зависящая от вызывающей стороны")
     })
-    public void issuesSock(@RequestBody SockRequest sockRequest){
+    public void issuesSock(@RequestBody SockRequest sockRequest) {
         sockService.issueSock(sockRequest);
     }
 
@@ -63,10 +63,10 @@ public class SocksController {
             @ApiResponse(responseCode = "400", description = "параметры запроса отсутствуют или имеют некорректный формат;"),
             @ApiResponse(responseCode = "500", description = "произошла ошибка, не зависящая от вызывающей стороны")
     })
-    public int getSocksCount(@RequestParam(required = false, name = "color")Color color,
-                             @RequestParam(required = false, name = "size")Size size,
-                             @RequestParam(required = false, name = "cottonMin")Integer cottonMin,
-                             @RequestParam(required = false, name = "cottonMax")Integer cottonMax){
+    public int getSocksCount(@RequestParam(required = false, name = "color") Color color,
+                             @RequestParam(required = false, name = "size") Size size,
+                             @RequestParam(required = false, name = "cottonMin") Integer cottonMin,
+                             @RequestParam(required = false, name = "cottonMax") Integer cottonMax) {
         return sockService.getSocksQuantity(color, size, cottonMin, cottonMax);
     }
 
@@ -78,7 +78,7 @@ public class SocksController {
             @ApiResponse(responseCode = "400", description = "параметры запроса отсутствуют или имеют некорректный формат;"),
             @ApiResponse(responseCode = "500", description = "произошла ошибка, не зависящая от вызывающей стороны")
     })
-    public void removeDefectiveProduct(@RequestBody SockRequest sockRequest){
+    public void removeDefectiveProduct(@RequestBody SockRequest sockRequest) {
         sockService.removeDefectiveSock(sockRequest);
     }
 

@@ -10,8 +10,6 @@ public enum Size {
     XL("45-48");
 
 
-
-
     private final String size;
 
     Size(String size) {
@@ -19,14 +17,14 @@ public enum Size {
     }
 
     @JsonValue
-    public String getSize(){
+    public String getSize() {
         return size;
     }
 
     @JsonCreator
-    public static Size forValues(String size){
-        for (Size value : Size.values()){
-            if (value.size.equals(size)){
+    public static Size forValues(String size) {
+        for (Size value : Size.values()) {
+            if (value.size.equals(size)) {
                 return value;
             }
         }

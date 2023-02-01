@@ -29,12 +29,14 @@ public class SocksServiceImpl implements SocksService {
         }
 
     }
+
     @Override
-    public void issueSock(SockRequest sockRequest){
+    public void issueSock(SockRequest sockRequest) {
         deleteSocks(sockRequest);
     }
+
     @Override
-    public void removeDefectiveSock(SockRequest sockRequest){
+    public void removeDefectiveSock(SockRequest sockRequest) {
         deleteSocks(sockRequest);
     }
 
@@ -51,19 +53,20 @@ public class SocksServiceImpl implements SocksService {
     }
 
 
-@Override
-    public int getSocksQuantity(Color color, Size size, Integer cottonMin, Integer cottonMax){
+    @Override
+    public int getSocksQuantity(Color color, Size size, Integer cottonMin, Integer cottonMax) {
         int total = 0;
-        for (Map.Entry<Socks, Integer> entry : sockMap.entrySet()){
-            if (color != null && !entry.getKey().getColor().equals(color)){
+        for (Map.Entry<Socks, Integer> entry : sockMap.entrySet()) {
+            if (color != null && !entry.getKey().getColor().equals(color)) {
                 continue;
             }
-            if (size != null && !entry.getKey().getSize().equals(size)){
+            if (size != null && !entry.getKey().getSize().equals(size)) {
                 continue;
             }
-            if (cottonMin != null && entry.getKey().getCottonPart() < cottonMin){
+            if (cottonMin != null && entry.getKey().getCottonPart() < cottonMin) {
                 continue;
-            }if (cottonMax != null && entry.getKey().getCottonPart() > cottonMax){
+            }
+            if (cottonMax != null && entry.getKey().getCottonPart() > cottonMax) {
                 continue;
             }
             total += entry.getValue();
@@ -87,11 +90,11 @@ public class SocksServiceImpl implements SocksService {
 
     private Socks mapToSock(SockRequest sockRequest) {
         return new Socks(sockRequest.getCottonPart(),
-                        sockRequest.getSize(),
+                sockRequest.getSize(),
                 sockRequest.getColor());
     }
 
-@Component
+    @Component
     public class ConverterString implements Converter<String, Size> {
 
         @Override

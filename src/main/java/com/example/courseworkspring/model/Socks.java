@@ -13,13 +13,13 @@ public class Socks {
     private final Size size;
     private final int cottonPart;
 
-@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public Socks(@JsonProperty("cottonPart") int cottonPart,
                  @JsonProperty("size") Size size,
-                 @JsonProperty("color")Color color){
-    this.cottonPart = cottonPart;
-    this.size = size;
-    this.color = color;
+                 @JsonProperty("color") Color color) {
+        this.cottonPart = cottonPart;
+        this.size = size;
+        this.color = color;
     }
 
     public Color getColor() {
